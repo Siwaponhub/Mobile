@@ -51,7 +51,8 @@ class _Add_creenState extends State<Add_creen> {
             Firestore_Datasource().AddNote(subtitle.text, title.text, indexx);
             Navigator.pop(context);
           },
-          child: Text('add task'),
+          child: Text('Add task',
+            style: TextStyle(color: Colors.white),),
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -61,7 +62,8 @@ class _Add_creenState extends State<Add_creen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text('Cancel'),
+          child: Text('Cancel',
+            style: TextStyle(color: Colors.white),),
         ),
       ],
     );
