@@ -1,14 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_to_do_list/const/colors.dart';
-import 'package:flutter_to_do_list/data/auth_data.dart';
-import 'login.dart';
+import 'package:flutter_to_do_list/screen/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  late User _curUser;
+  String _curEmail = "";
+
+  @override
+  void initState() {
+    super.initState();
+    _getCurrentUser();
+  }
+
+  void _getCurrentUser() {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    _curUser = auth.currentUser!;
+    setState(() {
+      _curEmail = _curUser.email!;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColors,
       appBar: AppBar(
         title: Text('Profile'),
       ),
@@ -23,33 +46,35 @@ class ProfilePage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              'Email:',
+              'Email: $_curEmail',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(height: 20),
-            // ElevatedButton(
-            //   style: ElevatedButton.styleFrom(
-            //     primary: Colors.grey,
-            //     minimumSize: Size(170, 48),
-            //   ),
-            //   onPressed: () {
-            //     // Firestore_Datasource().AddNote(subtitle.text, title.text, indexx);
-            //     Navigator.pop(context);
-            //   },
-            //   child: Text(
-            //     'Logout',
-            //     style: TextStyle(
-            //       color: Colors.white, // เปลี่ยนสีของตัวอักษรเป็นสีขาว
-            //     ),
-            //   ),
-            // ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.grey,
+                minimumSize: Size(170, 48),
+              ),
+              onPressed: () {
+                // ทำการออกจากระบบโดยการกลับไปยังหน้า Login
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => LogIN_Screen(() {})),
+                );
+              },
+              child: Text(
+                'Logout',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
           ],
         ),
       ),
-
     );
   }
 }

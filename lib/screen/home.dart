@@ -5,7 +5,7 @@ import 'package:flutter_to_do_list/screen/add_note_screen.dart';
 import 'package:flutter_to_do_list/screen/user.dart';
 import 'package:flutter_to_do_list/widgets/stream_note.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'login.dart';
+import 'package:flutter_to_do_list/screen/login.dart';
 class Home_Screen extends StatefulWidget {
   const Home_Screen({super.key});
 
@@ -18,6 +18,19 @@ bool show = true;
 class _Home_ScreenState extends State<Home_Screen> {
   late User _curUser;
   String _curEmail = "";
+  @override
+  void initState() {
+    super.initState();
+    _getCurrentUser();
+  }
+
+  void _getCurrentUser() {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    _curUser = auth.currentUser!;
+    setState(() {
+      _curEmail = _curUser.email!;
+    });
+  }
 
 
 
@@ -57,17 +70,17 @@ class _Home_ScreenState extends State<Home_Screen> {
               backgroundColor: Colors.blue, // สีตัวอย่างสำหรับปุ่มที่สาม
               child: Icon(Icons.person, size: 30), // ไอคอนตัวอย่างสำหรับปุ่มที่สาม
             ),
-            SizedBox(width: 16),FloatingActionButton(
-              onPressed: () {
-                // เพิ่มโค้ดที่ต้องการเมื่อกดปุ่มตามต้องการ
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Add_creen(),
-                ));
-              },
-              backgroundColor: Colors.red, // สีตัวอย่างสำหรับปุ่มที่สาม
-              child: Icon(Icons.logout, size: 30), // ไอคอนตัวอย่างสำหรับปุ่มที่สาม
-            ),
-            SizedBox(width: 16),
+            // SizedBox(width: 16),FloatingActionButton(
+            //   onPressed: () {
+            //     // เพิ่มโค้ดที่ต้องการเมื่อกดปุ่มตามต้องการ
+            //     Navigator.of(context).push(MaterialPageRoute(
+            //       builder: (context) => ProfilePage(),
+            //     ));
+            //   },
+            //   backgroundColor: Colors.red, // สีตัวอย่างสำหรับปุ่มที่สาม
+            //   child: Icon(Icons.logout, size: 30), // ไอคอนตัวอย่างสำหรับปุ่มที่สาม
+            // ),
+            // SizedBox(width: 16),
           ],
         ),
       ),
@@ -91,7 +104,7 @@ class _Home_ScreenState extends State<Home_Screen> {
             children: [
               Stream_note(false),
               Text(
-                'isDone',
+                'isDone ',
                 style: TextStyle(
                     fontSize: 16,
                     color: Colors.grey.shade500,

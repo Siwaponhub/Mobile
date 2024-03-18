@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_to_do_list/const/colors.dart';
 import 'package:flutter_to_do_list/data/auth_data.dart';
 
+// class LogIN_Screen extends StatefulWidget {
+//   final VoidCallback show;
+//   LogIN_Screen(this.show, {super.key});
+//
+//   @override
+//   State<LogIN_Screen> createState() => _LogIN_ScreenState();
+// }
+
 class LogIN_Screen extends StatefulWidget {
-  final VoidCallback show;
-  LogIN_Screen(this.show, {super.key});
+  final VoidCallback show; // เพิ่มพารามิเตอร์ show ให้ LogIN_Screen
+  LogIN_Screen(this.show, {Key? key}) : super(key: key);
 
   @override
   State<LogIN_Screen> createState() => _LogIN_ScreenState();

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "14380024514",
-    "project_id": "mobile-project-342dc",
-    "storage_bucket": "mobile-project-342dc.appspot.com"
+    "project_number": "123159354095",
+    "project_id": "project-mobile-7550d",
+    "storage_bucket": "project-mobile-7550d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:14380024514:android:f000106a5b6e13018b715b",
+        "mobilesdk_app_id": "1:123159354095:android:63a2c63ee69b874493991a",
         "android_client_info": {
           "package_name": "com.example.flutter_to_do_list"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAwrItriUQbRxaFAROSjqFBC3IiEmqUhXU"
+          "current_key": "AIzaSyCHTyqJExwprVVMz7NnwuJQqFUAr_jYx6w"
         }
       ],
       "services": {
